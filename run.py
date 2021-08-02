@@ -30,16 +30,22 @@ def guess():
     # Create while loop so guess will run until input is valid
     loop = 'no'
     while loop == 'no':
-        shot = input("Please enter your guess between 0 and 99 ")
-        # Change shot to int as user input will be number
-        shot = int(shot)
-        # Create if statement checking that guess input is valid 
-        # (between 0 and 99)
-        if shot < 0 or shot > 99:
-            print("Sorry, that number is not on the board. Please try again")
-        else:
-            shot = 'yes'
-            break
+        try:
+            shot = input("Please enter your guess between 0 and 99: \n")
+            # Change shot to int as user input will be number
+            shot = int(shot)
+            # Create if statement checking that guess input is valid.
+            # (between 0 and 99)
+            if shot < 0 or shot > 99:
+                print(
+                    '''Sorry, that number is not on the board.
+                    Please try again'''
+                    )
+            else:
+                shot = 'yes'
+                break
+        except:
+            print("Invalid input, please try again")
     return shot
 hit = []
 miss = []
