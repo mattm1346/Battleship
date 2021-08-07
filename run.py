@@ -11,6 +11,7 @@ print('''                __/___
 # print('hard = 3 ships 10 guesses')
 # Create variable for selecting level
 
+
 # Add input for user guess
 def guess(guesses):
     # Create while loop so guess will run until input is valid
@@ -23,12 +24,12 @@ def guess(guesses):
         # (between 0 and 99)
         if shot < 0 or shot > 99:
             print("Sorry, that number is not on the board. Please try again")
+        # Check if user has used number before
         elif shot in guesses:
             print("Sorry, you've used that number before. Try another")
         else:
-            shot = 'yes'
+            loop = 'yes'
             break
-
     return shot
 
 
@@ -52,9 +53,28 @@ def show_board(hit, miss, sink):
         print(x, row)
 
 
+# Create function to check if shot in guess hits ship
+def check_shot(shot, ship1, hit, miss, sink):
+    if shot in ship1:
+        ship1.remove(shot)
+        # Check if length of ship is greater than 0
+        if len(ship1) > 0:
+            hit.append(shot)
+        else:
+            sink.append(shot)
+    else:
+        miss.append(shot)
+
+    return ship1, hit, miss, sink
+
+
+ship1 = [45, 46, 47]
 hit = []
 miss = []
 sink = []
-guesses = hit + miss + sink
-shot = guess(guesses)
-show_board(hit, miss, sink)
+
+for i in range(6):
+    guesses = hit + miss + sink
+    shot = guess(guesses)
+    ship1, hit, miss, sink = check_shot(shot, ship1, hit, miss, sink)
+    show_board(hit, miss, sink)
