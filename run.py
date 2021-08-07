@@ -73,8 +73,14 @@ hit = []
 miss = []
 sink = []
 
+# Create loop so user has number of guesses
 for i in range(6):
     guesses = hit + miss + sink
     shot = guess(guesses)
     ship1, hit, miss, sink = check_shot(shot, ship1, hit, miss, sink)
     show_board(hit, miss, sink)
+
+    if len(ship1) < 1:
+        print("Congratulations! You sunk all the ships")
+        break
+print("Game Finished")
