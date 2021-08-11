@@ -61,6 +61,12 @@ def check_board(b):
         if num < 0 or num > 99:
             b = [-1]
             break
+        # Add statement if number ends in 9 then continues
+        # If ends in 0 then not valid
+        elif num % 9 == 0 and i < len(b) - 1:
+            if b[i+1] % 10 == 0:
+                b = [-1]
+                break
 
     return b
 
@@ -87,16 +93,21 @@ def check_boat(boat, start, direct):
         for i in range(boat):
             b.append(start - i)
             b = check_board(b)
-    print(b)
+    return(b)
 
 
-boats = [5]#, 4, 3, 3, 2, 2]
+ships = []
+boats = [5, 4, 3, 3, 2, 2]
 for boat in boats:
-    boat_start = randrange(99)
-# boat_direct - 1 = up, 2 = right, 3 = down, 4 = left
-    boat_direct = randrange(1, 4)
-    print(boat, boat_start, boat_direct)
-    check_boat(boat, boat_start, boat_direct)
+    b = [-1]
+    while b[0] == -1:
+        boat_start = randrange(99)
+        # boat_direct - 1 = up, 2 = right, 3 = down, 4 = left
+        boat_direct = randrange(1, 4)
+        print(boat, boat_start, boat_direct)
+        b = check_boat(boat, boat_start, boat_direct)
+    ships.append(b)
+    print(ships)
 
 
 # Create function to check if shot in guess hits ship
