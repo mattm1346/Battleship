@@ -55,6 +55,14 @@ def show_board(hit, miss, sink):
 
 # Create function for computer to place its ships at random
 # Create function to check boat range stays on board
+def check_board(b):
+    for i in range(len(b)):
+        num = b[i]
+        if num < 0 or num > 99:
+            b = [-1]
+            break
+
+    return b
 
 
 def check_boat(boat, start, direct):
@@ -63,22 +71,23 @@ def check_boat(boat, start, direct):
     if direct == 1:
         for i in range(boat):
             b.append(start - i * 10)
-            print(start - i * 10)
+            b = check_board(b)
     # right
     elif direct == 2:
         for i in range(boat):
             b.append(start + i)
-            print(start + i)
+            b = check_board(b)
     # down
     elif direct == 3:
         for i in range(boat):
             b.append(start + i * 10)
-            print(start + i * 10)
+            b = check_board(b)
     # left
     elif direct == 4:
         for i in range(boat):
             b.append(start - i)
-            print(start - i)
+            b = check_board(b)
+    print(b)
 
 
 boats = [5]#, 4, 3, 3, 2, 2]
@@ -87,7 +96,7 @@ for boat in boats:
 # boat_direct - 1 = up, 2 = right, 3 = down, 4 = left
     boat_direct = randrange(1, 4)
     print(boat, boat_start, boat_direct)
-    check_boat(boat , boat_start, boat_direct)
+    check_boat(boat, boat_start, boat_direct)
 
 
 # Create function to check if shot in guess hits ship
