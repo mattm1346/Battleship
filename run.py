@@ -1,15 +1,15 @@
+from random import randrange
+
+
 print('Welcome to Battleships!')
 print('''                __/___            
           _____/______|           
   _______/_____\_______\_____     
   \              < < <       |    
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~''')
-# Add input choosing level difficulty
-# print('Please select difficulty level (easy, medium, hard)')
-# print('easy = 1 ship and 6 guesses')
-# print('medium = 2 ships 9 guesses')
-# print('hard = 3 ships 10 guesses')
-# Create variable for selecting level
+
+# Add rules description
+# Add Build Board function
 
 
 # Add input for user guess
@@ -51,6 +51,43 @@ def show_board(hit, miss, sink):
             row = row + character
             place = place + 1
         print(x, row)
+
+
+# Create function for computer to place its ships at random
+# Create function to check boat range stays on board
+
+
+def check_boat(boat, start, direct):
+    b = []
+    # up
+    if direct == 1:
+        for i in range(boat):
+            b.append(start - i * 10)
+            print(start - i * 10)
+    # right
+    elif direct == 2:
+        for i in range(boat):
+            b.append(start + i)
+            print(start + i)
+    # down
+    elif direct == 3:
+        for i in range(boat):
+            b.append(start + i * 10)
+            print(start + i * 10)
+    # left
+    elif direct == 4:
+        for i in range(boat):
+            b.append(start - i)
+            print(start - i)
+
+
+boats = [5]#, 4, 3, 3, 2, 2]
+for boat in boats:
+    boat_start = randrange(99)
+# boat_direct - 1 = up, 2 = right, 3 = down, 4 = left
+    boat_direct = randrange(1, 4)
+    print(boat, boat_start, boat_direct)
+    check_boat(boat , boat_start, boat_direct)
 
 
 # Create function to check if shot in guess hits ship
