@@ -67,7 +67,7 @@ def check_board(b, taken):
             break
         # Add statement if number ends in 9 then continues
         # If ends in 0 then not valid
-        elif num % 9 == 0 and i < len(b) - 1:
+        elif b[i] % 10 == 9 and i < len(b) - 1:
             if b[i+1] % 10 == 0:
                 b = [-1]
                 break
@@ -100,20 +100,25 @@ def check_boat(boat, start, direct, taken):
     return(b)
 
 
-taken = []
-ships = []
-boats = [5, 4, 3, 3, 2, 2]
-for boat in boats:
-    b = [-1]
-    while b[0] == -1:
-        boat_start = randrange(99)
-        # boat_direct - 1 = up, 2 = right, 3 = down, 4 = left
-        boat_direct = randrange(1, 4)
-        print(boat, boat_start, boat_direct)
-        b = check_boat(boat, boat_start, boat_direct, taken)
-    ships.append(b)
-    taken = taken + b
-    print(ships)
+def create_ships():
+    taken = []
+    ships = []
+    boats = [5, 4, 3, 3, 2, 2]
+    for boat in boats:
+        b = [-1]
+        while b[0] == -1:
+            boat_start = randrange(99)
+            # boat_direct - 1 = up, 2 = right, 3 = down, 4 = left
+            boat_direct = randrange(1, 4)
+            print(boat, boat_start, boat_direct)
+            b = check_boat(boat, boat_start, boat_direct, taken)
+        ships.append(b)
+        taken = taken + b
+        print(ships)
+    return ships, taken
+
+
+boats, taken = create_ships()
 
 
 # Create function to check if shot in guess hits ship
@@ -137,7 +142,7 @@ miss = []
 sink = []
 
 # Create loop so user has number of guesses
-for i in range(6):
+for i in range(100):
     guesses = hit + miss + sink
     shot = guess(guesses)
     ship1, hit, miss, sink = check_shot(shot, ship1, hit, miss, sink)
