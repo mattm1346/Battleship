@@ -55,10 +55,14 @@ def show_board(hit, miss, sink):
 
 # Create function for computer to place its ships at random
 # Create function to check boat range stays on board
-def check_board(b):
+def check_board(b, taken):
     for i in range(len(b)):
         num = b[i]
-        if num < 0 or num > 99:
+        # Check for duplicates so ships do not overlap
+        if num in taken:
+            b = [-1]
+            break
+        elif num < 0 or num > 99:
             b = [-1]
             break
         # Add statement if number ends in 9 then continues
@@ -71,31 +75,32 @@ def check_board(b):
     return b
 
 
-def check_boat(boat, start, direct):
+def check_boat(boat, start, direct, taken):
     b = []
     # up
     if direct == 1:
         for i in range(boat):
             b.append(start - i * 10)
-            b = check_board(b)
+            b = check_board(b, taken)
     # right
     elif direct == 2:
         for i in range(boat):
             b.append(start + i)
-            b = check_board(b)
+            b = check_board(b, taken)
     # down
     elif direct == 3:
         for i in range(boat):
             b.append(start + i * 10)
-            b = check_board(b)
+            b = check_board(b, taken)
     # left
     elif direct == 4:
         for i in range(boat):
             b.append(start - i)
-            b = check_board(b)
+            b = check_board(b, taken)
     return(b)
 
 
+taken = []
 ships = []
 boats = [5, 4, 3, 3, 2, 2]
 for boat in boats:
@@ -105,8 +110,9 @@ for boat in boats:
         # boat_direct - 1 = up, 2 = right, 3 = down, 4 = left
         boat_direct = randrange(1, 4)
         print(boat, boat_start, boat_direct)
-        b = check_boat(boat, boat_start, boat_direct)
+        b = check_boat(boat, boat_start, boat_direct, taken)
     ships.append(b)
+    taken = taken + b
     print(ships)
 
 
