@@ -15,17 +15,27 @@ print(
 # Add Build Board function
 
 # Define lists and variables for actions
-hit = []
-miss = []
-sink = []
-guesses = []
-missed = 0
-tactics = []
+# Board 1 - Computer
+hit1 = []
+miss1 = []
+sink1 = []
+guesses1 = []
+missed1 = 0
+tactics1 = []
+taken1 = []
+# Board 2 - Player
+hit2 = []
+miss2 = []
+sink2 = []
+guesses2 = []
+missed2 = 0
+tactics2 = []
+taken2 = []
 # Set amount of ships
-# Computer creates board at random
-boats, taken = create_ships()
-# Player creates board
-ships = create_ships_player()
+# Computer creates board as player 1
+boats, taken1 = create_ships(taken1)
+# Player creates board as player 2
+ships, taken2 = create_ships_player(taken2)
 # Create loop for game
 for i in range(80):
 
@@ -141,8 +151,7 @@ def check_boat(boat, start, direct, taken):
     return(b)
 
 
-def create_ships():
-    taken = []
+def create_ships(taken):
     ships = []
     boats = [5, 4, 3, 3, 2, 2]
     for boat in boats:
