@@ -25,9 +25,18 @@ tactics = []
 # Computer creates board at random
 boats, taken = create_ships()
 # Player creates board
-
+ships = create_ships_player()
 # Create loop for game
 for i in range(80):
+
+    # Player shoots
+    guesses = hit + miss + sink
+    shot = guess(guesses)
+    ships, hit, miss, sink = check_shot(shot, ships, hit, miss, sink)
+    show_board(hit, miss, sink)
+    # Check Player shot
+    # Computer shoots
+    # Check Computer shot
     shot, guesses = guess_comp(guesses, tactics)
     boats, hit, miss, sink, missed = check_shot(shot, boats, hit, miss, sink)
     if missed == 1:
@@ -41,10 +50,7 @@ for i in range(80):
         print('Game Finished', i)
         break
 
-# Player shoots
-# Check Player shot
-# Computer shoots
-# Check Computer shot
+
 # Repeat until ships are empty
 
 # Add input for user guess
@@ -177,11 +183,7 @@ miss = []
 sink = []
 
 # Create loop so user has number of guesses
-for i in range(100):
-    guesses = hit + miss + sink
-    shot = guess(guesses)
-    ship1, hit, miss, sink = check_shot(shot, ship1, hit, miss, sink)
-    show_board(hit, miss, sink)
+
 
     if len(ship1) < 1:
         print("Congratulations! You sunk all the ships")
