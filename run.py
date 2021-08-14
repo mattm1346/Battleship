@@ -20,11 +20,27 @@ miss = []
 sink = []
 guesses = []
 missed = 0
+tactics = []
 # Set amount of ships
 # Computer creates board at random
+boats, taken = create_ships()
 # Player creates board
 
 # Create loop for game
+for i in range(80):
+    shot, guesses = guess_comp(guesses, tactics)
+    boats, hit, miss, sink, missed = check_shot(shot, boats, hit, miss, sink)
+    if missed == 1:
+        tactics = calc_tactics(shot, tactics, guesses, hit)
+    elif missed == 2:
+        tactics = []
+    elif len(tactics) > 0:
+        tactics.pop(0)
+
+    if check_if_empty(boats):
+        print('Game Finished', i)
+        break
+
 # Player shoots
 # Check Player shot
 # Computer shoots
