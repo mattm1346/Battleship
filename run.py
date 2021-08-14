@@ -14,6 +14,22 @@ print(
 # Add rules description
 # Add Build Board function
 
+# Define lists and variables for actions
+hit = []
+miss = []
+sink = []
+guesses = []
+missed = 0
+# Set amount of ships
+# Computer creates board at random
+# Player creates board
+
+# Create loop for game
+# Player shoots
+# Check Player shot
+# Computer shoots
+# Check Computer shot
+# Repeat until ships are empty
 
 # Add input for user guess
 def guess(guesses):
