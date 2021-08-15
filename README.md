@@ -66,3 +66,23 @@ I initially wanted to create a difficulty selection option of Easy and Hard. Thi
 
 I decided to remove the difficulty selection as the random feature defeats the purpose of a strategy game in my opinion.
 
+# Features
+
+**Build Your Ship Fleet**
+
+![Build Fleet](images/Build-fleet.png)
+
+**Clear Characters of Actions**
+
+![Board with hit and miss](images/icons.png)
+
+**Clear Character of Sunk Ship**
+
+![Board with sunk ship](images/sunkship.png)
+
+**Endgame Message**
+
+![Player win message](images/player-win.png)
+
+![Computer win message](images/computer-win.png)
+
