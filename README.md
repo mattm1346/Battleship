@@ -38,3 +38,31 @@ HIT = o
 SINK = O
 
 If you sink a ship, the last character will be 'O' to notify that you have sunk a ship.
+___
+
+# User Experience
+
+**Target Audience**
+
+The target audience for the game are strategy gamers who want to play a game of strategy with the added difficulty of the computer using logic to sink ships.
+
+**User Stories**
+
+1. As a novice to strategy games I want a clear description as to how to play the game. End user goal: Understand rules of game. End business goal: Keep users playing game. Acceptance criteria: Place clear print messages telling player to input value, Add clear info of rules in README.
+
+2. As an experienced strategy gamer, I want to play a game where the opponent uses logic. End user goal: Play game of strategy against logic user. End business goal: Keep users playing game. Acceptance criteria: Add tactics function that tells computer to look at adjacent places to a ship once hit.
+
+3. As a gamer, I want to place where I want my ships myself. End user goal: Place ships. End business goal: Keep users playing game. Acceptance criteria: Add create ships function letting user place own ships on board.
+
+# Wireframes
+
+![Wireframe Homepage](images/wireframe-homepage.png)
+
+![Wireframe Player Board](images/wireframe-playerboard.png)
+
+![Wireframe Computer Board](images/wireframe-computerboard.png)
+
+I initially wanted to create a difficulty selection option of Easy and Hard. This would benefit user #1 (The Novice) who is a beginner to strategy games. In order to achieve an easy difficulty, I planned to remove the logic function so that the computer would guess at random, even if it hits a ship, it would continue at random.
+
+I decided to remove the difficulty selection as the random feature defeats the purpose of a strategy game in my opinion.
+
