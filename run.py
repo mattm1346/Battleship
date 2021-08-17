@@ -273,8 +273,8 @@ for i in range(80):
     # Player shoots
     guesses2 = hit2 + miss2 + sink2
     shot2 = guess(guesses2)
-    ships, hit2, miss2, sink2, missed2 = check_shot(
-        shot2, ships, hit2, miss2, sink2)
+    boats, hit2, miss2, sink2, missed2 = check_shot(
+        shot2, boats, hit2, miss2, sink2)
     show_board(hit2, miss2, sink2)
     # Check player shot
 
@@ -284,8 +284,8 @@ for i in range(80):
         break
     # Computer shoots
     shot1, guesses1 = guess_comp(guesses1, tactics1)
-    boats, hit1, miss1, sink1, missed1 = check_shot(
-        shot1, boats, hit1, miss1, sink1)
+    ships, hit1, miss1, sink1, missed1 = check_shot(
+        shot1, ships, hit1, miss1, sink1)
     show_board(hit1, miss1, sink1)
     # Check computer shot
     if missed1 == 1:
@@ -295,6 +295,6 @@ for i in range(80):
     elif len(tactics1) > 0:
         tactics1.pop(0)
     # Repeat loop until ships empty
-    if check_if_empty(boats):
+    if check_if_empty(ships):
         print('Game Finished - Computer Wins in', i, 'moves')
         break
