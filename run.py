@@ -43,20 +43,23 @@ def check_board(b, taken):
 def get_ship(ship_length, taken):
     check_ship_length = True
     while check_ship_length:
-        ship = []
-        # user input numbers
-        print('Place your Ships!')
-        print('Enter ship of length', ship_length, 'between 0 and 99')
-        for i in range(ship_length):
-            boat_num = input('Please enter a number  \n')
-            ship.append(int(boat_num))
-        # check ship is in board and not in taken
-        ship = check_board(ship, taken)
-        if ship[0] != -1:
-            taken = taken + ship
-            break
-        else:
-            print('Error, Ship not finished')
+        try:
+            ship = []
+            # user input numbers
+            print('Place your Ships!')
+            print('Enter ship of length', ship_length, 'between 0 and 99')
+            for i in range(ship_length):
+                boat_num = input('Please enter a number  \n')
+                ship.append(int(boat_num))
+            # check ship is in board and not in taken
+            ship = check_board(ship, taken)
+            if ship[0] != -1:
+                taken = taken + ship
+                break
+            else:
+                print('Error, Ship not finished')
+        except ValueError:
+            print('Error, Please enter a number')
     return ship
 
 
@@ -222,19 +225,22 @@ def guess(guesses):
     # Create while loop so guess will run until input is valid
     is_guess_not_valid = True
     while is_guess_not_valid:
-        shot = input("Please enter your guess between 0 and 99: \n")
-        # Change shot to int as user input will be number
-        shot = int(shot)
-        # Create if statement checking that guess input is valid.
-        # (between 0 and 99)
-        if shot < 0 or shot > 99:
-            print("Sorry, that number is not on the board. Please try again")
-        # Check if user has used number before
-        elif shot in guesses:
-            print("Sorry, you've used that number before. Try another")
-        else:
-            is_guess_not_valid = False
-            break
+        try:
+            shot = input("Please enter your guess between 0 and 99: \n")
+            # Change shot to int as user input will be number
+            shot = int(shot)
+            # Create if statement checking that guess input is valid.
+            # (between 0 and 99)
+            if shot < 0 or shot > 99:
+                print("Sorry, that number is not on the board. Please try again")
+            # Check if user has used number before
+            elif shot in guesses:
+                print("Sorry, you've used that number before. Try another")
+            else:
+                is_guess_not_valid = False
+                break
+        except ValueError:
+            print('Error, Please enter a number')
     return shot
 
 
