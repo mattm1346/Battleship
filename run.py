@@ -41,17 +41,17 @@ def check_board(b, taken):
 
 
 # Create function for user to build ships
-def get_ship(long, taken):
-    loop = True
-    while loop:
+def get_ship(ship_length, taken):
+    check_ship_length = True
+    while check_ship_length:
         ship = []
         # user input numbers
         print('Place your Ships!')
-        print('Enter ship of length', long, 'between 0 and 99')
-        for i in range(long):
+        print('Enter ship of length', ship_length, 'between 0 and 99')
+        for i in range(ship_length):
             boat_num = input('Please enter a number  \n')
             ship.append(int(boat_num))
-        # check ship
+        # check ship is in board and not in taken
         ship = check_board(ship, taken)
         if ship[0] != -1:
             taken = taken + ship
@@ -73,22 +73,22 @@ def create_ships_player(taken):
 
 
 # Function checks that boat position is valid (connected and not scattered)
-def check_boat(boat, start, direct, taken):
+def check_boat(boat, start, ship_direction, taken):
     b = []
     # up = 1
-    if direct == 1:
+    if ship_direction == 1:
         for i in range(boat):
             b.append(start - i * 10)
     # right = 2
-    elif direct == 2:
+    elif ship_direction == 2:
         for i in range(boat):
             b.append(start + i)
     # down = 3
-    elif direct == 3:
+    elif ship_direction == 3:
         for i in range(boat):
             b.append(start + i * 10)
     # left = 4
-    elif direct == 4:
+    elif ship_direction == 4:
         for i in range(boat):
             b.append(start - i)
     b = check_board(b, taken)
@@ -103,9 +103,9 @@ def create_ships(taken):
         b = [-1]
         while b[0] == -1:
             boat_start = randrange(99)
-            # boat_direct - 1 = up, 2 = right, 3 = down, 4 = left
-            boat_direct = randrange(1, 4)
-            b = check_boat(boat, boat_start, boat_direct, taken)
+            # boat_direction - 1 = up, 2 = right, 3 = down, 4 = left
+            boat_direction = randrange(1, 4)
+            b = check_boat(boat, boat_start, boat_direction, taken)
         ships.append(b)
         taken = taken + b
     return ships, taken
@@ -130,14 +130,14 @@ def show_board_c(taken):
 # Function for computer to guess
 def guess_comp(guesses, tactics):
     # Create while loop so guess will run until input is valid
-    loop = 'no'
-    while loop == 'no':
+    is_guess_not_valid = True
+    while is_guess_not_valid:
         if len(tactics) > 0:
             shot = tactics[0]
         else:
             shot = randrange(99)
         if shot not in guesses:
-            loop = 'yes'
+            is_guess_not_valid = False
             guesses.append(shot)
             break
     return shot, guesses
