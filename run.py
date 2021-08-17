@@ -232,7 +232,8 @@ def guess(guesses):
             # Create if statement checking that guess input is valid.
             # (between 0 and 99)
             if shot < 0 or shot > 99:
-                print("Sorry, that number is not on the board. Please try again")
+                print('''Sorry, that number is not on the board.
+                    Please try again''')
             # Check if user has used number before
             elif shot in guesses:
                 print("Sorry, you've used that number before. Try another")
