@@ -135,6 +135,10 @@ I copied the ascii art 'Battleships' from the website below. There was not an au
 
 [Network Science](http://www.network-science.de/ascii/)
 
+I created a separate git repository for the purpose of testing the random placing of the computer ships and testing the tactics that the computer uses before implementing the code into the main Battleship app. I did this to avoid having to enter inputs when testing my code. I realise that I could have commented out the inputs and functions but felt this way was easier.
+
+[Test-ship-random](https://github.com/mattm1346/test-ship-random) 
+
 **Youtube**
 
 [Dr Codie](https://www.youtube.com/channel/UCFH0iZlolP0HiJOUuDxihqg)

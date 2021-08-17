@@ -8,7 +8,7 @@ print('Welcome to Battleships!')
 print(RULES)
 # Final message with added whitespace for clearer separation for rules and game
 print('''
-Good luck and enjoy
+Good luck and enjoy :)
 
 ''')
 
