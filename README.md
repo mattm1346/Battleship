@@ -117,6 +117,12 @@ ExtendsClass found no errors or warnings with the syntax of the code.
 
 **Clearer Boards**
 
+Overall, I'm pleased that the game works well. I would like to adjust both the boards so that they are clearer as it can be quite confusing which board is the player's and which is the computers.
+
+**Clear Rules**
+
+I feel that the rules and description of How to Play is quite short. However, adding to the rules could make the app too text heavy which could dismay users before they start the app.
+
 # Technology used
 
 The two websites below were very useful for learning materials. [Stack overflow](https://stackoverflow.com/) is a forum website where users post problems with their code and recieve input from the community.
@@ -152,3 +158,5 @@ The app has been deployed to GitHub and a link to the page can be found here: [B
 The app has been deployed to Heroku and a link to the page can be found here: [Battleship - Heroku](https://dashboard.heroku.com/apps/battleships-python)
 
 A link to the app can be found here: [Battleship](https://battleships-python.herokuapp.com/)
+
+![Final Preview of app](images/deployed.png)
