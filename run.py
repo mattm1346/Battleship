@@ -184,44 +184,45 @@ def check_shot(shot, boats, hit, miss, sink):
 
 # Function so computer use logic after hits player ship
 def calc_tactics(shot, tactics, guesses, hit):
-    temp = []
+    # tact is a temporary list that shots will append to
+    tact = []
     if len(tactics) < 1:
-        temp = [shot-1, shot+1, shot-10, shot+10]
+        tact = [shot-1, shot+1, shot-10, shot+10]
     else:
         if shot - 1 in hit:
             if shot - 2 in hit:
-                temp = [shot-3, shot+1]
+                tact = [shot-3, shot+1]
             else:
-                temp = [shot-2, shot+1]
+                tact = [shot-2, shot+1]
         elif shot + 1 in hit:
             if shot - 2 in hit:
-                temp = [shot+3, shot-1]
+                tact = [shot+3, shot-1]
             else:
-                temp = [shot+2, shot-1]
+                tact = [shot+2, shot-1]
         elif shot - 10 in hit:
             if shot - 2 in hit:
-                temp = [shot-30, shot+10]
+                tact = [shot-30, shot+10]
             else:
-                temp = [shot-20, shot+10]
+                tact = [shot-20, shot+10]
         elif shot + 10 in hit:
             if shot - 2 in hit:
-                temp = [shot+30, shot-10]
+                tact = [shot+30, shot-10]
             else:
-                temp = [shot+20, shot-10]
-    # For longer ships
-    cand = []
-    for i in range(len(temp)):
-        if temp[i] not in guesses and temp[i] < 100 and temp[i] > -1:
-            cand.append(temp[i])
-    random.shuffle(cand)
-    return cand
+                tact = [shot+20, shot-10]
+    # Out of tact, if the values are valid, append to tact_list
+    tact_list = []
+    for i in range(len(tact)):
+        if tact[i] not in guesses and tact[i] < 100 and tact[i] > -1:
+            tact_list.append(tact[i])
+    random.shuffle(tact_list)
+    return tact_list
 
 
 # Add input for user guess
 def guess(guesses):
     # Create while loop so guess will run until input is valid
-    loop = 'no'
-    while loop == 'no':
+    is_guess_not_valid = True
+    while is_guess_not_valid:
         shot = input("Please enter your guess between 0 and 99: \n")
         # Change shot to int as user input will be number
         shot = int(shot)
@@ -233,12 +234,13 @@ def guess(guesses):
         elif shot in guesses:
             print("Sorry, you've used that number before. Try another")
         else:
-            loop = 'yes'
+            is_guess_not_valid = False
             break
     return shot
 
 
-# Function checks if list is empty
+# Function checks if list is empty, used to check if no boats remaining
+# so game will end
 # Code taken from https://thispointer.com/
 def check_if_empty(list_of_lists):
     return all([not elem for elem in list_of_lists])
@@ -247,35 +249,34 @@ def check_if_empty(list_of_lists):
 # Create order for functions to be called
 # Define lists and variables for actions
 # Board 1 - Computer
-hit1 = []
-miss1 = []
-sink1 = []
-guesses1 = []
-missed1 = 0
-tactics1 = []
-taken1 = []
+comp_hit = []
+comp_miss = []
+comp_sink = []
+comp_guess = []
+comp_missed = 0
+comp_tactics = []
+comp_taken = []
 # Board 2 - Player
-hit2 = []
-miss2 = []
-sink2 = []
-guesses2 = []
-missed2 = 0
-tactics2 = []
-taken2 = []
+player_hit = []
+player_miss = []
+player_sink = []
+player_guesses = []
+player_missed = 0
+player_taken = []
 
 # Computer creates board
-boats, taken1 = create_ships(taken1)
+boats, comp_taken = create_ships(comp_taken)
 # User creates board
-ships, taken2 = create_ships_player(taken2)
-show_board_c(taken2)
-# Create loop for game
-for i in range(80):
+ships, player_taken = create_ships_player(player_taken)
+show_board_c(player_taken)
+# Create loop for game until player or computer sinks ships
+for i in range(99):
     # Player shoots
-    guesses2 = hit2 + miss2 + sink2
-    shot2 = guess(guesses2)
-    boats, hit2, miss2, sink2, missed2 = check_shot(
-        shot2, boats, hit2, miss2, sink2)
-    show_board(hit2, miss2, sink2)
+    player_guesses = player_hit + player_miss + player_sink
+    shot2 = guess(player_guesses)
+    boats, player_hit, player_miss, player_sink, player_missed = check_shot(
+        shot2, boats, player_hit, player_miss, player_sink)
+    show_board(player_hit, player_miss, player_sink)
     # Check player shot
 
     # Repeat loop until ships empty
@@ -283,17 +284,18 @@ for i in range(80):
         print('Game Finished - You Win in', i, 'moves')
         break
     # Computer shoots
-    shot1, guesses1 = guess_comp(guesses1, tactics1)
-    ships, hit1, miss1, sink1, missed1 = check_shot(
-        shot1, ships, hit1, miss1, sink1)
-    show_board(hit1, miss1, sink1)
+    shot1, comp_guess = guess_comp(comp_guess, comp_tactics)
+    ships, comp_hit, comp_miss, comp_sink, comp_missed = check_shot(
+        shot1, ships, comp_hit, comp_miss, comp_sink)
+    show_board(comp_hit, comp_miss, comp_sink)
     # Check computer shot
-    if missed1 == 1:
-        tactics1 = calc_tactics(shot1, tactics1, guesses1, hit1)
-    elif missed1 == 2:
-        tactics1 = []
-    elif len(tactics1) > 0:
-        tactics1.pop(0)
+    if comp_missed == 1:
+        comp_tactics = calc_tactics(
+            shot1, comp_tactics, comp_guess, comp_hit)
+    elif comp_missed == 2:
+        comp_tactics = []
+    elif len(comp_tactics) > 0:
+        comp_tactics.pop(0)
     # Repeat loop until ships empty
     if check_if_empty(ships):
         print('Game Finished - Computer Wins in', i, 'moves')
