@@ -1,36 +1,11 @@
 from random import randrange
 import random
+from constants import INTRO_TEXT
+from constants import RULES
 
-# Logo taken from http://www.network-science.de/ascii/
-print(
-    '''  ____       _______ _______ _      ______  _____ _    _ _____ _____   _____ 
-|  _ \   /\|__   __|__   __| |    |  ____|/ ____| |  | |_   _|  __ \ / ____|
-| |_) | /  \  | |     | |  | |    | |__  | (___ | |__| | | | | |__) | (___  
-|  _ < / /\ \ | |     | |  | |    |  __|  \___ \|  __  | | | |  ___/ \___ \ 
-| |_) / ____ \| |     | |  | |____| |____ ____) | |  | |_| |_| |     ____) |
-|____/_/    \_\_|     |_|  |______|______|_____/|_|  |_|_____|_|    |_____/ 
-''')
-
+print(INTRO_TEXT)
 print('Welcome to Battleships!')
-# Add a rules print message at start of game
-print('How to Play')
-print('''
-First place your ships, a total of 6 ships are needed to start.
-1st ship of length 5 spaces, 2nd length 4, 3rd and 4th length 3, and 5th
-& 6th of length 2.
-''')
-print('''
-Next take a shot at the computer's board.
-Enter a number between 0 and 99 to guess. After you make your shot, the board
-will update with either a hit or miss.
-
-Hit = o
-Miss = x
-
-If a ship has been sunk, "O" will display to show that that ship is sunk.
-
-Sink = O
-''')
+print(RULES)
 # Final message with added whitespace for clearer separation for rules and game
 print('''
 Good luck and enjoy :)
@@ -298,7 +273,8 @@ for i in range(80):
     # Player shoots
     guesses2 = hit2 + miss2 + sink2
     shot2 = guess(guesses2)
-    ships, hit2, miss2, sink2, missed2 = check_shot(shot2, ships, hit2, miss2, sink2)
+    ships, hit2, miss2, sink2, missed2 = check_shot(
+        shot2, ships, hit2, miss2, sink2)
     show_board(hit2, miss2, sink2)
     # Check player shot
 
@@ -308,7 +284,8 @@ for i in range(80):
         break
     # Computer shoots
     shot1, guesses1 = guess_comp(guesses1, tactics1)
-    boats, hit1, miss1, sink1, missed1 = check_shot(shot1, boats, hit1, miss1, sink1)
+    boats, hit1, miss1, sink1, missed1 = check_shot(
+        shot1, boats, hit1, miss1, sink1)
     show_board(hit1, miss1, sink1)
     # Check computer shot
     if missed1 == 1:
