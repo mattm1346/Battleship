@@ -125,13 +125,13 @@ I feel that the rules and description of How to Play is quite short. However, ad
 
 # Technology used
 
-The two websites below were very useful for learning materials. [Stack overflow](https://stackoverflow.com/) is a forum website where users post problems with their code and recieve input from the community.
+The two websites below were very useful for learning materials. [Stack overflow](https://stackoverflow.com/) is a forum website where users post problems with their code and receive input from the community.
 
 [thispointer.com](https://thispointer.com/)
 
 [stackoverflow](https://stackoverflow.com/)
 
-I copied the ascii art 'Battleships' from the website below. There was not an author attached to the art so I cannot give a full acknowledgement. The art copied became the logo for the game
+I copied the ascii art 'Battleships' from the website below. There was not an author attached to the art so I cannot give a full acknowledgement. The art copied became the logo for the game.
 
 [Network Science](http://www.network-science.de/ascii/)
 
