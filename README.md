@@ -3,7 +3,10 @@
 Welcome to Battleships! This is a turn-based tactical game where the objective is to sink your opponent's ships before they sink yours.
 
 # How to Play
-1. Place your ships. You will need to place 6 ships in total.
+
+**1. Place your ships**.
+
+You will need to place 6 ships in total.
 
 The first ship is a length of 5
 
@@ -19,7 +22,9 @@ If you place your ships incorrectly, an error message will display and you can t
 
 ![Build Fleet Error Message](images/ship-build-error.png)
 
-2. The Computer will build its board with the same amount of ships. You then get the first shot.
+**2. Take a shot** 
+
+The Computer will build its board with the same amount of ships. You then get the first shot.
 
 ![Computer Board Screenshot](images/computer-board.png)
 
@@ -86,12 +91,38 @@ I decided to remove the difficulty selection as the random feature defeats the p
 
 ![Computer win message](images/computer-win.png)
 
+# Testing
+
+Whilst working on the code, I kept in mind to check for errors using Gitpod's Lint checker. Only two errors displaying that two lines of code are too long but I could not fix these errors without breaking the code.
+
+The warnings come from the beggining logo print message, alerting of whitespace and invalid characters that have no effect on the code but are soley for aesthetic purposes.
+
+![Gitpod lint validator](images/testing-error.png)
+
+[Pep8](http://pep8online.com/)
+
+Pep8 found the same errors as Lint.
+
+![Pep8 code checked](images/pep8.png)
+
+[ExtendsClass](https://extendsclass.com/python-tester.html)
+
+ExtendsClass found no errors or warnings with the syntax of the code.
+
+![ExtendsClass code checked](images/extendsclass.png)
+
 # Technology used
 
-https://thispointer.com/
+[thispointer.com](https://thispointer.com/)
 
-https://stackoverflow.com/
+[stackoverflow](https://stackoverflow.com/)
 
-https://www.youtube.com/channel/UCFH0iZlolP0HiJOUuDxihqg - Dr Codie
+*Youtube*
 
-http://www.network-science.de/ascii/ - Logo
+[Dr Codie](https://www.youtube.com/channel/UCFH0iZlolP0HiJOUuDxihqg)
+
+[Dylan Israel](https://www.youtube.com/channel/UC5Wi_NYysX-LfcqT3Hq9Faw)
+
+[Dev Ed](https://www.youtube.com/channel/UClb90NQQcskPUGDIXsQEz5Q)
+
+[Network Science](http://www.network-science.de/ascii/)
