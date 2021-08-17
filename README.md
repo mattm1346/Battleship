@@ -86,3 +86,12 @@ I decided to remove the difficulty selection as the random feature defeats the p
 
 ![Computer win message](images/computer-win.png)
 
+# Technology used
+
+https://thispointer.com/
+
+https://stackoverflow.com/
+
+https://www.youtube.com/channel/UCFH0iZlolP0HiJOUuDxihqg - Dr Codie
+
+http://www.network-science.de/ascii/ - Logo

@@ -1,6 +1,7 @@
 from random import randrange
 import random
 
+# Logo taken from http://www.network-science.de/ascii/
 print(
     '''  ____       _______ _______ _      ______  _____ _    _ _____ _____   _____ 
 |  _ \   /\|__   __|__   __| |    |  ____|/ ____| |  | |_   _|  __ \ / ____|
@@ -20,7 +21,7 @@ First place your ships, a total of 6 ships are needed to start.
 ''')
 print('''
 Next take a shot at the computer's board.
-Enter a number between 0 and 99 to guess. After you make your shot, the board 
+Enter a number between 0 and 99 to guess. After you make your shot, the board
 will update with either a hit or miss.
 
 Hit = o
@@ -36,6 +37,7 @@ Good luck and enjoy :)
 
 
 ''')
+
 
 # Create a function that checks for duplicates when placing ships
 def check_board(b, taken):
@@ -63,6 +65,7 @@ def check_board(b, taken):
     return b
 
 
+# Create function for user to build ships
 def get_ship(long, taken):
     loop = True
     while loop:
@@ -83,6 +86,7 @@ def get_ship(long, taken):
     return ship
 
 
+# Creates lists of ships
 def create_ships_player(taken):
     ships = []
     boats = [5, 4, 3, 3, 2, 2]
@@ -93,21 +97,22 @@ def create_ships_player(taken):
     return ships, taken
 
 
+# Function checks that boat position is valid (connected and not scattered)
 def check_boat(boat, start, direct, taken):
     b = []
-    # up
+    # up = 1
     if direct == 1:
         for i in range(boat):
             b.append(start - i * 10)
-    # right
+    # right = 2
     elif direct == 2:
         for i in range(boat):
             b.append(start + i)
-    # down
+    # down = 3
     elif direct == 3:
         for i in range(boat):
             b.append(start + i * 10)
-    # left
+    # left = 4
     elif direct == 4:
         for i in range(boat):
             b.append(start - i)
@@ -131,9 +136,8 @@ def create_ships(taken):
     return ships, taken
 
 
-# Create function to show board
+# Create function to show computer board
 def show_board_c(taken):
-    print('      Computer Board  ')
     print('   0 1 2 3 4 5 6 7 8 9')
     # Create loop for board
     place = 0
@@ -148,6 +152,7 @@ def show_board_c(taken):
         print(x, row)
 
 
+# Function for computer to guess
 def guess_comp(guesses, tactics):
     # Create while loop so guess will run until input is valid
     loop = 'no'
@@ -163,6 +168,7 @@ def guess_comp(guesses, tactics):
     return shot, guesses
 
 
+# Show player board
 def show_board(hit, miss, sink):
     print('   0 1 2 3 4 5 6 7 8 9')
     # Create loop for board
@@ -182,6 +188,7 @@ def show_board(hit, miss, sink):
         print(x, row)
 
 
+# Function checks if shot hits, misses or sinks ship
 def check_shot(shot, boats, hit, miss, sink):
     missed = 0
     for i in range(len(boats)):
@@ -200,6 +207,7 @@ def check_shot(shot, boats, hit, miss, sink):
     return boats, hit, miss, sink, missed
 
 
+# Function so computer use logic after hits player ship
 def calc_tactics(shot, tactics, guesses, hit):
     temp = []
     if len(tactics) < 1:
@@ -255,10 +263,13 @@ def guess(guesses):
     return shot
 
 
+# Function checks if list is empty
+# Code taken from https://thispointer.com/
 def check_if_empty(list_of_lists):
     return all([not elem for elem in list_of_lists])
 
 
+# Create order for functions to be called
 # Define lists and variables for actions
 # Board 1 - Computer
 hit1 = []
@@ -293,7 +304,7 @@ for i in range(80):
 
     # Repeat loop until ships empty
     if check_if_empty(boats):
-        print('Game Finished - You Win', i)
+        print('Game Finished - You Win in', i, 'moves')
         break
     # Computer shoots
     shot1, guesses1 = guess_comp(guesses1, tactics1)
@@ -308,5 +319,5 @@ for i in range(80):
         tactics1.pop(0)
     # Repeat loop until ships empty
     if check_if_empty(boats):
-        print('Game Finished - Computer Wins', i)
+        print('Game Finished - Computer Wins in', i, 'moves')
         break
