@@ -10,7 +10,34 @@ print(
 |____/_/    \_\_|     |_|  |______|______|_____/|_|  |_|_____|_|    |_____/ 
 ''')
 
+print('Welcome to Battleships!')
+# Add a rules print message at start of game
+print('How to Play')
+print('''
+First place your ships, a total of 6 ships are needed to start.
+1st ship of length 5 spaces, 2nd length 4, 3rd and 4th length 3, and 5th
+& 6th of length 2.
+''')
+print('''
+Next take a shot at the computer's board.
+Enter a number between 0 and 99 to guess. After you make your shot, the board 
+will update with either a hit or miss.
 
+Hit = o
+Miss = x
+
+If a ship has been sunk, "O" will display to show that that ship is sunk.
+
+Sink = O
+''')
+# Final message with added whitespace for clearer separation for rules and game
+print('''
+Good luck and enjoy :)
+
+
+''')
+
+# Create a function that checks for duplicates when placing ships
 def check_board(b, taken):
     b.sort()
     for i in range(len(b)):
@@ -41,7 +68,7 @@ def get_ship(long, taken):
     while loop:
         ship = []
         # user input numbers
-        print('Place your fleet!')
+        print('Place your Ships!')
         print('Enter ship of length', long, 'between 0 and 99')
         for i in range(long):
             boat_num = input('Please enter a number  \n')
@@ -98,11 +125,9 @@ def create_ships(taken):
             boat_start = randrange(99)
             # boat_direct - 1 = up, 2 = right, 3 = down, 4 = left
             boat_direct = randrange(1, 4)
-            # print(boat, boat_start, boat_direct)
             b = check_boat(boat, boat_start, boat_direct, taken)
         ships.append(b)
         taken = taken + b
-        # print(ships)
     return ships, taken
 
 
