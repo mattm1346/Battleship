@@ -99,6 +99,8 @@ The warnings come from the beggining logo print message, alerting of whitespace 
 
 ![Gitpod lint validator](images/testing-error.png)
 
+**Updated** - 17th August: Line too long error fixed. No further errors found
+
 [Pep8](http://pep8online.com/)
 
 Pep8 found the same errors as Lint.
@@ -111,18 +113,42 @@ ExtendsClass found no errors or warnings with the syntax of the code.
 
 ![ExtendsClass code checked](images/extendsclass.png)
 
+# Future Development
+
+**Clearer Boards**
+
 # Technology used
+
+The two websites below were very useful for learning materials. [Stack overflow](https://stackoverflow.com/) is a forum website where users post problems with their code and recieve input from the community.
 
 [thispointer.com](https://thispointer.com/)
 
 [stackoverflow](https://stackoverflow.com/)
 
-*Youtube*
+I copied the ascii art 'Battleships' from the website below. There was not an author attached to the art so I cannot give a full acknowledgement. The art copied became the logo for the game
+
+[Network Science](http://www.network-science.de/ascii/)
+
+**Youtube**
 
 [Dr Codie](https://www.youtube.com/channel/UCFH0iZlolP0HiJOUuDxihqg)
+
+Dr Codie's video tutorial helped with generating the tactics that the computer uses.
 
 [Dylan Israel](https://www.youtube.com/channel/UC5Wi_NYysX-LfcqT3Hq9Faw)
 
 [Dev Ed](https://www.youtube.com/channel/UClb90NQQcskPUGDIXsQEz5Q)
 
-[Network Science](http://www.network-science.de/ascii/)
+The two videos above were very helpful with refreshing what I've learnt about Python and providing more information with Python functions.
+
+# Deployment
+
+**GitHub**
+
+The app has been deployed to GitHub and a link to the page can be found here: [Battleship - GitHub](https://github.com/mattm1346/Battleship)
+
+**Heroku**
+
+The app has been deployed to Heroku and a link to the page can be found here: [Battleship - Heroku](https://dashboard.heroku.com/apps/battleships-python)
+
+A link to the app can be found here: [Battleship](https://battleships-python.herokuapp.com/)
